@@ -1,0 +1,10 @@
+{% extends 'base_temp.html' %}
+{% load posts_tags_filters %}
+{% block title %}Список категорий{% endblock %}
+{% block content %}
+  <ol>
+    {% for category in categories %}
+      <li><a href="{{ category.get_absolute_url }}">{{ category.name }}({{ category|count_is_published }})</a></li>
+    {% endfor %}
+  </ol>
+{% endblock %}

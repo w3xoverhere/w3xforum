@@ -1,0 +1,19 @@
+.posts-container {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.post-card {
+    min-height: 20%;
+    max-height: 20%;
+    margin-bottom: 50px;
+    max-height: 550px;
+}
+
+.post-p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

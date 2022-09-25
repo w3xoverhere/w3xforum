@@ -1,0 +1,27 @@
+{% load posts_tags_filters %}
+<style>
+  #cat_nav {
+    background-color: #252525;
+  }
+  .cat_a {
+    color: #2EC077;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .cat_a:hover {
+    color: #2C9762;
+  }
+</style>
+<div id="cat_nav" class="container_fluid">
+  <div class="row">
+    {% for category in categories %}
+      <div class="col-2" style="text-align:center;">
+        <a class="cat_a" href="{{ category.get_absolute_url }}">{{ category.name }}({{ category|count_is_published }})</a>
+      </div>
+    {% endfor %}
+    <div class="col-2">
+      <a class="cat_a" href="{% url 'posts:categories_list' %}">Все категории...</a>
+    </div>
+  </div>
+</div>

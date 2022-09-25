@@ -1,0 +1,38 @@
+{% extends 'base_temp.html' %}
+{% load static %}
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/posts.css'%}">
+{% endblock %}
+{% block title %}List template{% endblock %}
+{% block content %}
+  {% include '_inc/_cat_navbar.html' %}
+    <div class="container posts-container">
+      <h1>{% block header %}Default header{% endblock %}</h1>
+        {% for post in page_obj %}
+            <div class="row post-card">
+                <div class="col">
+                    <div class="card">
+                      <div class="card-header">
+                        {{ post.category }}
+                      </div>
+                        <div>
+                            {% if post.image_set.all %}
+                              {% for images in post.image_set.all %}
+                                <img src="{{ images.imgs.url }}" alt="-" width="300px" height="250px">
+                              {% endfor %}
+                            {% endif %}
+                        </div>
+                      <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text post-p">{{ post.content }}</p>
+                          <p>Автор: {{ post.author }}</p><br>
+                          <small>Опубликовано: {{ post.published }}<br>Отредактировано: {{ post.edited }}</small><br>
+                        <a style="margin-top:10px;" href="{{ post.get_absolute_url }}" class="btn btn-primary">Перейти к посту</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% include '_inc/_posts_paginator.html' %}
+    </div>
+{% endblock %}
