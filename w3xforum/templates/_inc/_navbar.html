@@ -1,24 +1,27 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="nav">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link"  href="/">Главная</a>
+    <a href="#" class="navbar-logo">W3Xforum</a>
+    <div class="navbar-wrap">
+      <ul class="navbar-menu" style="margin: auto;">
+        <li>
+          <a class="navbar-ref" href="/">Главная</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'posts:posts_list' %}">Посты</a>
+        <li>
+          <a class="navbar-ref" href="{% url 'posts:posts_list' %}">Посты</a>
         </li>
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'posts:post_add' %}">Предложить пост</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="#">О нас</a>
+        <li>
+          <a class="navbar-ref" href="{% url 'posts:post_add' %}">Предложить пост</a>
         </li>
       </ul>
+      <div class="nav-user-menu">
+        {% if user.is_authenticated %}
+          <a class="nav-user-ref" href="{% url 'auth:logout' %}" alt="-">Выход</a>
+          <a href="#" alt="-"><img class="nav-user-avatar" src="{{ user.avatar.url }}" alt="-"></a>
+        {% else %}
+          <a class="nav-user-ref" href="{% url 'auth:login' %}" alt="-">Вход</a>
+          <a class="nav-user-ref" href="{% url 'auth:register' %}" alt="-">Регистрация</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </nav>

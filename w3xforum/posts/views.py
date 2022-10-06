@@ -1,10 +1,12 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import Post, Category, Image
 from .forms import PostForm
 from django.core.paginator import Paginator
+
 
 
 class PostsList(ListView):
@@ -27,14 +29,7 @@ class PostDetail(DetailView):
             raise Http404('Post does not exist')
 
 
-def post_detail(request, category_slug, post_pk):
-    post = get_object_or_404(Post, category__slug=category_slug, pk=post_pk)
-    context = {
-        'current_post': post,
-    }
-    return render(request, "posts/post_detail.html", context=context)
-
-
+@login_required
 def post_add(request):
     if request.method == "POST":
         form = PostForm(request.POST or None, request.FILES or None)

@@ -1,0 +1,28 @@
+{% extends 'base_temp.html' %}
+{% load static %}
+{% block title %}Авторизация{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+<form method="post">
+    <div class="form-wrapper">
+        <h2>Авторизация</h2>
+        {{ form.non_field_errors }}
+        {% if form.errors %}
+              {% for field in form %}
+                   {% for error in field.errors %}
+                        <p class="error-text">{{ error|escape }}</p>
+                   {% endfor %}
+              {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        {{ form.username.label_tag }}
+        <div class="form-element">{{ form.username }}</div>
+        {{ form.password.label_tag }}
+        <div class="form-element">{{ form.password }}</div>
+        <div class="form-element"><a href="#" alt="-">Забыли пароль?</a></div>
+        <div class="form-element"><button type="submit" class="btn button">Войти</button></div>
+    </div>
+</form>
+{% endblock %}

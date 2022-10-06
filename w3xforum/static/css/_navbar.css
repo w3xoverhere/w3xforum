@@ -1,0 +1,73 @@
+.nav {
+    width: 100%;
+    height: 70px;
+    background-color: #151616;
+    -webkit-box-shadow: 0px 8px 10px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 8px 10px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 8px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.nav .container-fluid {
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    text-decoration: none;
+    color: #C9C9C9;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.navbar-ref {
+    color: #24985e;
+}
+
+.navbar-ref:hover {
+    transition: 0.5s;
+    color: #97e6be;
+}
+
+.nav .navbar-menu {
+    list-style-type: none;
+    margin-right: 30px;
+}
+
+.navbar-menu li {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.navbar-menu li a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.navbar-wrap {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+
+.nav-user-avatar {
+    min-height: 42px;
+    max-height: 42px;
+    width: auto;
+    max-width: 42px;
+    border: 2px solid green;
+    border-radius: 50%;
+}
+
+.nav-user-ref {
+    text-decoration: none;
+    color: #C9C9C9;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.nav-user-ref: hover {
+    color: ;
+}

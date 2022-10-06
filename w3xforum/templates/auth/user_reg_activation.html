@@ -1,0 +1,30 @@
+{% extends 'base_temp.html' %}
+{% load static %}
+{% block title %}Подтверждение регистрации{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-6">
+                <div>
+                    <h2>Подтвердите регистрацию</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 50px;">
+            <div class="col">
+                <p>
+                    Мы отправили на вашу почту письмо с кодом активации.
+                    Введите код:
+                </p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.code }}
+                    <div class="form-element"><button type="submit" class="btn button">Подтвердить</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

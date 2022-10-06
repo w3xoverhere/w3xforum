@@ -2,7 +2,6 @@ from django import forms
 from django.core import validators
 from .models import Post, Category
 
-
 class PostForm(forms.ModelForm):
     category = forms.ModelChoiceField(queryset=Category.objects.all(), label='Категория')
     title = forms.CharField(label='Название', validators=[validators.MinLengthValidator(8)], error_messages= {

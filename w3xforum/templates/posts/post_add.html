@@ -1,5 +1,9 @@
 {% extends 'base_temp.html' %}
+{% load static %}
 {% block title %}Добавить пост{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
 {% block content %}
     {% if messages %}
         <ul>
@@ -8,17 +12,26 @@
             {% endfor %}
         </ul>
     {% endif %}
-    {% if error_messages %}
-        <ul>
-            {% for error in error_messages %}
-            <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-wrapper">
+            <h2>Добавить пост</h2>
+            {% if form.errors %}
+                  {% for field in form %}
+                       {% for error in field.errors %}
+                            <p class="error-text">{{ error|escape }}</p>
+                       {% endfor %}
+                  {% endfor %}
+            {% endif %}
+            {{ form.category.label_tag }}
+            <div class="form-element">{{ form.category }}</div>
+            {{ form.title.label_tag }}
+            <div class="form-element">{{ form.title }}</div>
+            {{ form.content.label_tag }}
+            <div class="form-element">{{ form.content }}</div>
+            {{ form.imgs.label_tag }}
+            <div class="form-element">{{ form.imgs }}</div>
+      <button type="submit" class="btn button">Отправить</button>
     </form>
 {% endblock %}
