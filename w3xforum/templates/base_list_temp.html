@@ -24,13 +24,6 @@
                       <div class="card-header">
                         {{ post.category }}
                       </div>
-                        <div>
-                            {% if post.image_set.all %}
-                              {% for images in post.image_set.all %}
-                                <img src="{{ images.imgs.url }}" alt="-" width="300px" height="250px">
-                              {% endfor %}
-                            {% endif %}
-                        </div>
                       <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text post-p">{{ post.content }}</p>

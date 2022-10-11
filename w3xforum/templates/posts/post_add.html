@@ -17,6 +17,7 @@
         {% csrf_token %}
         <div class="form-wrapper">
             <h2>Добавить пост</h2>
+            <div class="error-text">{{ form.non_field_errors }}</div>
             {% if form.errors %}
                   {% for field in form %}
                        {% for error in field.errors %}
@@ -24,11 +25,10 @@
                        {% endfor %}
                   {% endfor %}
             {% endif %}
-            {{ form.category.label_tag }}
-            <div class="form-element">{{ form.category }}</div>
-            {{ form.title.label_tag }}
-            <div class="form-element">{{ form.title }}</div>
-            {{ form.content.label_tag }}
+            <div class="form-group">
+                <div class="form-element">{{ form.category }}</div>
+                <div class="form-element">{{ form.title }}</div>
+            </div>
             <div class="form-element">{{ form.content }}</div>
             {{ form.imgs.label_tag }}
             <div class="form-element">{{ form.imgs }}</div>

@@ -1,0 +1,23 @@
+{% extends 'base_temp.html' %}
+{% load static %}
+{% block title %}Новый пароль{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-wrapper">
+                <h2>Введите новый пароль</h2>
+                <div class="form-element">
+                    {{ form.password }}
+                </div>
+                <div class="form-element">
+                    {{ form.password2 }}
+                </div>
+                <div class="form-element"><button type="submit" class="btn button">Подтвердить</button></div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

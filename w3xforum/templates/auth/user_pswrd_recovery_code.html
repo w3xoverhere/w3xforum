@@ -1,0 +1,29 @@
+{% extends 'base_temp.html' %}
+{% load static %}
+{% block title %}Подтверждение восстановления{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-6">
+                <div>
+                    <h2>Восстановление аккаунта</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 50px;">
+            <div class="col">
+                <p>
+                    Введите <strong>код</strong> отправленный на вашу почту:
+                </p>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.code }}
+                    <div class="form-element"><button type="submit" class="btn button">Далее</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

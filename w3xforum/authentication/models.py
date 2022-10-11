@@ -9,3 +9,4 @@ def get_avatar_path(instance, filename):
 class User(AbstractUser):
     avatar = models.ImageField(verbose_name="Аватар", upload_to=get_avatar_path, blank=True)
     description = models.CharField(verbose_name="О себе", max_length=600, blank=True)
+    email = models.EmailField(verbose_name="Почта", unique=True, db_index=True)

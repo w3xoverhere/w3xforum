@@ -15,16 +15,24 @@
   .cat_a:hover {
     color: #2C9762;
   }
+
+  .cat_nav_wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  }
 </style>
 <div id="cat_nav" class="container_fluid">
   <div class="row">
-    {% for category in categories %}
-      <div class="col-2" style="text-align:center;">
-        <a class="cat_a" href="{{ category.get_absolute_url }}">{{ category.name }}({{ category|count_is_published }})</a>
+    <div class="cat_nav_wrapper">
+      {% for category in categories %}
+        <div>
+          <a class="cat_a" href="{{ category.get_absolute_url }}">{{ category.name }}({{ category|count_is_published }})</a>
+        </div>
+      {% endfor %}
+      <div>
+        <a class="cat_a" href="{% url 'posts:categories_list' %}">Все категории...</a>
       </div>
-    {% endfor %}
-    <div class="col-2">
-      <a class="cat_a" href="{% url 'posts:categories_list' %}">Все категории...</a>
     </div>
   </div>
 </div>
